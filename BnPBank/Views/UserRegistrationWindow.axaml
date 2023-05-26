@@ -1,0 +1,94 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:BnPBank.ViewModels"
+        xmlns:conv="clr-namespace:BnPBank.Utilities"
+        x:Class="BnPBank.Views.UserRegistrationWindow"
+        x:DataType="local:UserRegistrationWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="User Registration">
+
+    <Window.Resources>
+        <conv:BoolToColorConverter x:Key="BoolToColor" />
+        <conv:ByteToImageConverter x:Key="ByteToImageConverter"/>
+    </Window.Resources>
+
+    <Design.DataContext>
+        <local:UserRegistrationWindowViewModel/>
+    </Design.DataContext>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="4" Text="User Registration" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" />
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="First Name:" Margin="10" Padding="5" FontSize="14"
+               Foreground="{Binding IsFirstNameEmpty, Converter={StaticResource BoolToColor}}" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding FirstName}" Margin="10" Padding="5" FontSize="14" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Last Name:" Margin="10" Padding="5" FontSize="14"
+                   Foreground="{Binding IsLastNameEmpty, Converter={StaticResource BoolToColor}}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding LastName}" Margin="10" Padding="5" FontSize="14" />
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Username:" Margin="10" Padding="5" FontSize="14"
+                   Foreground="{Binding IsUsernameInvalid, Converter={StaticResource BoolToColor}}" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Username}" Margin="10" Padding="5" FontSize="14" />
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Email:" Margin="10" Padding="5" FontSize="14"
+                   Foreground="{Binding IsEmailInvalid, Converter={StaticResource BoolToColor}}" />
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Email}" Margin="10" Padding="5" FontSize="14" />
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Confirm Email:" Margin="10" Padding="5" FontSize="14" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ConfirmEmail}" Margin="10" Padding="5" FontSize="14" />
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Profile Picture:" Margin="10" Padding="5" FontSize="14" />
+        <Button Grid.Row="6" Grid.Column="1" Content="Upload" Command="{Binding UploadCommand}" Margin="10" Padding="5" FontSize="14" />
+        <Image Grid.Row="7" Grid.Column="1" Width="100" Height="100" Source="{Binding ProfilePicture, Converter={StaticResource ByteToImageConverter}}" />
+
+        <TextBlock Grid.Row="4" Grid.Column="2" Text="Password:" Margin="10" Padding="5" FontSize="14"
+                   Foreground="{Binding IsPasswordInvalid, Converter={StaticResource BoolToColor}}" />
+        <TextBox Grid.Row="4" Grid.Column="3" PasswordChar="*" Text="{Binding Password}" Margin="10" Padding="5" FontSize="14" />
+
+        <TextBlock Grid.Row="5" Grid.Column="2" Text="Confirm Password:" Margin="10" Padding="5" FontSize="14" HorizontalAlignment="Right" />
+        <TextBox Grid.Row="5" Grid.Column="3" PasswordChar="*" Text="{Binding ConfirmPassword}" Margin="10" Padding="5" FontSize="14" />
+
+        <Grid Grid.Row="9" Grid.ColumnSpan="4" Margin="0,20,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+            
+                <!-- Register button -->
+                <Button Grid.Column="0" Content="Register" Command="{Binding RegisterCommand}" Margin="10" Padding="5" FontSize="14" HorizontalAlignment="Center"/>
+
+                <!-- Cancel button -->
+                <Button Grid.Column="1" Content="Cancel" Command="{Binding CancelCommand}" Margin="10" Padding="5" FontSize="14" HorizontalAlignment="Center"/>
+            </Grid>
+        </Grid>
+        
+        <TextBlock Grid.Row="10" Grid.ColumnSpan="4" Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center" Margin="10,10,10,0" />
+    </Grid>
+</Window>

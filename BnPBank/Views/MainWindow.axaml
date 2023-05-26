@@ -1,0 +1,42 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:BnPBank.Views"
+        xmlns:vm="clr-namespace:BnPBank.ViewModels"
+        x:Class="BnPBank.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Bank Main View">        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top Bar -->
+        <Grid Grid.Row="0" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="Log Out" Command="{Binding LogOutCommand}" />
+
+            <Border Grid.Column="1" Background="Transparent" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" FontSize="20" />
+            </Border>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+                <Image Width="30" Height="30" Source="{Binding ProfilePicture, Converter={StaticResource ByteToImageConverter}}" />
+                <Button Content="Account Settings" Command="{Binding AccountSettingsCommand}" />
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content -->
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+            <Button Content="Accounts Dashboard" Command="{Binding AccountsViewCommand}" Padding="10" FontSize="16" Width="200" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Button Content="Transaction History" Command="{Binding TransactionsViewCommand}" Padding="10" FontSize="16" Width="200" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Button Content="Make a Transaction" Command="{Binding CreateTransactionViewCommand}" Padding="10" FontSize="16" Width="200" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Button Content="Create New Account" Command="{Binding CreateAccountViewCommand}" Padding="10" FontSize="16" Width="200" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</Window>

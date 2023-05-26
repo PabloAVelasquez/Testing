@@ -1,0 +1,13 @@
+﻿<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BnPBank"
+             xmlns:utils="clr-namespace:BnPBank.Utilities"
+             x:Class="BnPBank.App">
+    <Application.Resources>
+        <local:ViewLocator x:Key="ViewLocator" />
+        <utils:ByteToImageConverter x:Key="ByteToImageConverter" />
+    </Application.Resources>
+    <Application.Styles>
+        <FluentTheme Mode="Light" />
+    </Application.Styles>
+</Application>

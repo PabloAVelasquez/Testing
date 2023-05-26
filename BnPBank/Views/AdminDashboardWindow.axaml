@@ -1,0 +1,6 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="BnPBank.Views.AdminDashboardWindow"
+        Title="Admin Dashboard">
+    <TextBlock>Welcome to the admin dashboard!</TextBlock>
+</Window>

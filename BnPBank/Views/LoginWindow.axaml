@@ -1,0 +1,39 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:BnPBank.ViewModels;assembly=BnPBank"
+        x:Class="BnPBank.Views.LoginWindow"
+        x:DataType="vm:LoginWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Login">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Welcome to B&amp;P Bank!" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <TextBlock Text="Please login to continue" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+            
+            <StackPanel Orientation="Vertical" MaxWidth="200">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Username:" Width="100"/>
+                    <TextBox Text="{Binding Username}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Password:" Width="100"/>
+                    <TextBox PasswordChar="*" Text="{Binding Password}" Width="200"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,10">
+                <Button Content="Login" Command="{Binding LoginCommand}" Margin="10"/>
+                <Button Content="Register" Command="{Binding RegisterCommand}" Margin="10"/>
+            </StackPanel>
+            
+            <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>
